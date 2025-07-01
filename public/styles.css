@@ -1,6 +1,7 @@
-/* ===== VARIABLES ===== */
+/* ===== VARIÁVEIS ===== */
+/* Define cores, fontes, tamanhos, espaçamentos e outros valores reutilizáveis */
 :root {
-  /* Colors - JP Higienizações Palette */
+  /* Cores da paleta da JP Higienizações */
   --color-primary: #1e3a8a; /* Azul escuro */
   --color-primary-light: #3b82f6; /* Azul médio */
   --color-primary-dark: #1e40af; /* Azul mais escuro */
@@ -20,11 +21,11 @@
   --color-success: #10b981;
   --color-error: #ef4444;
   
-  /* Typography */
+  /* Fontes */
   --font-primary: 'Roboto', sans-serif;
   --font-secondary: 'Roboto Slab', serif;
   
-  /* Font Sizes */
+  /* Tamanhos de fonte */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -35,7 +36,7 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   
-  /* Spacing */
+  /* Espaçamentos */
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
@@ -48,13 +49,13 @@
   --spacing-16: 4rem;
   --spacing-20: 5rem;
   
-  /* Shadows */
+  /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   
-  /* Border Radius */
+  /* Bordas arredondadas */
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
@@ -62,7 +63,7 @@
   --radius-2xl: 1rem;
   --radius-full: 9999px;
   
-  /* Transitions */
+  /* Transições */
   --transition-fast: 0.15s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
   --transition-slow: 0.5s ease-in-out;
@@ -77,6 +78,7 @@
 }
 
 /* ===== RESET ===== */
+/* Remove margens e estilos padrão para consistência */
 * {
   margin: 0;
   padding: 0;
@@ -84,7 +86,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Rola suavemente ao clicar em links */
 }
 
 body {
@@ -117,7 +119,8 @@ button {
   font-family: inherit;
 }
 
-/* ===== UTILITIES ===== */
+/* ===== UTILITÁRIOS ===== */
+/* Estilos reutilizáveis para contêineres e seções */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -148,7 +151,8 @@ button {
   margin: 0 auto;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== BOTÕES ===== */
+/* Estilos para botões reutilizáveis */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -194,7 +198,8 @@ button {
   justify-content: center;
 }
 
-/* ===== HEADER ===== */
+/* ===== CABEÇALHO ===== */
+/* Estiliza o cabeçalho fixo com menu */
 .header {
   position: fixed;
   top: 0;
@@ -288,7 +293,8 @@ button {
   cursor: pointer;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== SEÇÃO HERO ===== */
+/* Estiliza a seção principal com título e imagem */
 .hero {
   padding-top: 120px;
   background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-white) 100%);
@@ -361,7 +367,8 @@ button {
   box-shadow: var(--shadow-xl);
 }
 
-/* ===== ABOUT SECTION ===== */
+/* ===== SEÇÃO SOBRE ===== */
+/* Estiliza a seção sobre a empresa */
 .about {
   background-color: var(--color-gray-50);
 }
@@ -425,7 +432,8 @@ button {
   box-shadow: var(--shadow-lg);
 }
 
-/* ===== SERVICES SECTION ===== */
+/* ===== SEÇÃO SERVIÇOS ===== */
+/* Estiliza os cards de serviços */
 .services__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -496,7 +504,8 @@ button {
   font-weight: bold;
 }
 
-/* ===== DIFFERENTIALS SECTION ===== */
+/* ===== SEÇÃO DIFERENCIAIS ===== */
+/* Estiliza os cards de diferenciais */
 .differentials {
   background-color: var(--color-gray-50);
 }
@@ -549,7 +558,8 @@ button {
   line-height: 1.6;
 }
 
-/* ===== TESTIMONIALS SECTION ===== */
+/* ===== SEÇÃO DEPOIMENTOS ===== */
+/* Estiliza os depoimentos dos clientes */
 .testimonials__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -593,7 +603,8 @@ button {
   display: block;
 }
 
-/* ===== COVERAGE SECTION ===== */
+/* ===== SEÇÃO ÁREA DE COBERTURA ===== */
+/* Estiliza a seção com mapa e lista de cidades */
 .coverage {
   background-color: var(--color-gray-50);
 }
@@ -654,22 +665,8 @@ button {
   overflow: hidden;
 }
 
-.coverage__map-placeholder {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gray-400);
-  background-color: var(--color-gray-100);
-}
-
-.coverage__map-placeholder i {
-  font-size: var(--font-size-4xl);
-  margin-bottom: var(--spacing-4);
-}
-
-/* ===== CONTACT SECTION ===== */
+/* ===== SEÇÃO CONTATO ===== */
+/* Estiliza a seção de contato com formulário */
 .contact__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -727,7 +724,8 @@ button {
   color: var(--color-gray-600);
 }
 
-/* ===== FORM ===== */
+/* ===== FORMULÁRIO ===== */
+/* Estiliza o formulário de contato */
 .form {
   background-color: var(--color-white);
   padding: var(--spacing-8);
@@ -767,7 +765,8 @@ button {
   min-height: 120px;
 }
 
-/* ===== FOOTER ===== */
+/* ===== RODAPÉ ===== */
+/* Estiliza o rodapé com informações da empresa */
 .footer {
   background-color: var(--color-gray-900);
   color: var(--color-gray-300);
@@ -844,7 +843,8 @@ button {
   color: var(--color-gray-400);
 }
 
-/* ===== FLOATING ELEMENTS ===== */
+/* ===== ELEMENTOS FLUTUANTES ===== */
+/* Estiliza o botão flutuante do WhatsApp */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -884,6 +884,7 @@ button {
   }
 }
 
+/* Estiliza o botão de voltar ao topo */
 .scroll-top {
   position: fixed;
   bottom: 100px;
@@ -919,7 +920,8 @@ button {
   font-size: var(--font-size-lg);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== DESIGN RESPONSIVO ===== */
+/* Ajustes para telas menores que 1024px */
 @media screen and (max-width: 1024px) {
   .hero__container,
   .about__content,
@@ -942,6 +944,7 @@ button {
   }
 }
 
+/* Ajustes para telas menores que 768px */
 @media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
@@ -1003,6 +1006,7 @@ button {
   }
 }
 
+/* Ajustes para telas menores que 480px */
 @media screen and (max-width: 480px) {
   .container {
     padding: 0 var(--spacing-3);
@@ -1055,7 +1059,8 @@ button {
   }
 }
 
-/* ===== THEME TOGGLE BUTTON ===== */
+/* ===== BOTÃO DE ALTERNÂNCIA DE TEMA ===== */
+/* Estiliza o botão de tema claro/escuro */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -1075,7 +1080,8 @@ button {
   box-shadow: var(--shadow-md);
 }
 
-/* ===== DARK MODE ===== */
+/* ===== MODO ESCURO ===== */
+/* Ajusta cores para o modo escuro */
 [data-theme="dark"] {
   --color-white: #1f2937; /* Fundo escuro */
   --color-gray-50: #111827;

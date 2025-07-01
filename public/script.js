@@ -1,30 +1,32 @@
-// ===== NAVIGATION ===== 
+// ===== NAVEGAÇÃO =====
+// Seleciona elementos do menu de navegação
 const navMenu = document.getElementById('nav-menu');
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
 const navLinks = document.querySelectorAll('.nav__link');
 
-// Show menu
+// Mostra o menu no celular ao clicar no ícone de hambúrguer
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-menu');
     });
 }
 
-// Hide menu
+// Esconde o menu no celular ao clicar no ícone de fechar
 if (navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
     });
 }
 
-// Remove menu mobile
+// Esconde o menu no celular ao clicar em um link
 const linkAction = () => {
     navMenu.classList.remove('show-menu');
 };
 navLinks.forEach(n => n.addEventListener('click', linkAction));
 
-// ===== SCROLL SECTIONS ACTIVE LINK =====
+// ===== LINK ATIVO AO ROLAR =====
+// Destaca o link do menu correspondente à seção visível na tela
 const sections = document.querySelectorAll('section[id]');
 
 const scrollActive = () => {
@@ -45,10 +47,10 @@ const scrollActive = () => {
 };
 window.addEventListener('scroll', scrollActive);
 
-// ===== SCROLL HEADER =====
+// ===== EFEITO NO CABEÇALHO AO ROLAR =====
+// Altera o fundo e sombra do cabeçalho ao rolar a página
 const scrollHeader = () => {
     const header = document.getElementById('header');
-    // When the scroll is greater than 50 viewport height, add the scroll-header class
     if (window.scrollY >= 50) {
         header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
         header.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
@@ -59,7 +61,8 @@ const scrollHeader = () => {
 };
 window.addEventListener('scroll', scrollHeader);
 
-// ===== SCROLL TO TOP =====
+// ===== BOTÃO VOLTAR AO TOPO =====
+// Mostra/esconde o botão de voltar ao topo ao rolar
 const scrollTop = document.getElementById('scroll-top');
 
 const scrollToTop = () => {
@@ -71,6 +74,7 @@ const scrollToTop = () => {
 };
 window.addEventListener('scroll', scrollToTop);
 
+// Faz o botão de voltar ao topo rolar suavemente para o início
 if (scrollTop) {
     scrollTop.addEventListener('click', () => {
         window.scrollTo({
@@ -80,7 +84,8 @@ if (scrollTop) {
     });
 }
 
-// ===== SMOOTH SCROLLING =====
+// ===== ROLAGEM SUAVE =====
+// Adiciona rolagem suave para links com âncoras
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -94,21 +99,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== CONTACT FORM =====
+// ===== FORMULÁRIO DE CONTATO =====
+// Envia os dados do formulário para o WhatsApp
 const contactForm = document.getElementById('contact-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
+        // Obtém os dados do formulário
         const formData = new FormData(this);
         const name = formData.get('name');
         const whatsapp = formData.get('whatsapp');
         const service = formData.get('service');
         const message = formData.get('message');
         
-        // Create WhatsApp message
+        // Cria a mensagem para o WhatsApp
         let whatsappMessage = `Olá! Gostaria de solicitar um orçamento.\n\n`;
         whatsappMessage += `*Nome:* ${name}\n`;
         whatsappMessage += `*WhatsApp:* ${whatsapp}\n`;
@@ -118,22 +124,22 @@ if (contactForm) {
         }
         whatsappMessage += `\nAguardo retorno. Obrigado!`;
         
-        // Encode message for URL
+        // Codifica a mensagem para URL
         const encodedMessage = encodeURIComponent(whatsappMessage);
         
-        // Open WhatsApp
+        // Abre o WhatsApp com a mensagem
         const whatsappURL = `https://wa.me/5551983012611?text=${encodedMessage}`;
         window.open(whatsappURL, '_blank');
         
-        // Reset form
+        // Limpa o formulário
         this.reset();
         
-        // Show success message
+        // Mostra notificação de sucesso
         showNotification('Redirecionando para o WhatsApp...', 'success');
     });
 }
 
-// Helper function to get service name
+// Função auxiliar para obter o nome completo do serviço
 function getServiceName(serviceValue) {
     const services = {
         'higienizacao-sofas': 'Higienização de Sofás',
@@ -146,13 +152,14 @@ function getServiceName(serviceValue) {
     return services[serviceValue] || serviceValue;
 }
 
-// ===== NOTIFICATION SYSTEM =====
+// ===== SISTEMA DE NOTIFICAÇÕES =====
+// Exibe notificações flutuantes na tela
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
+    // Remove notificações existentes
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
     
-    // Create notification element
+    // Cria elemento de notificação
     const notification = document.createElement('div');
     notification.className = `notification notification--${type}`;
     notification.innerHTML = `
@@ -165,7 +172,7 @@ function showNotification(message, type = 'info') {
         </button>
     `;
     
-    // Add styles
+    // Aplica estilos à notificação
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -183,7 +190,7 @@ function showNotification(message, type = 'info') {
         animation: slideIn 0.3s ease-out;
     `;
     
-    // Add close functionality
+    // Adiciona funcionalidade ao botão de fechar
     const closeBtn = notification.querySelector('.notification__close');
     closeBtn.style.cssText = `
         background: none;
@@ -200,10 +207,10 @@ function showNotification(message, type = 'info') {
         setTimeout(() => notification.remove(), 300);
     });
     
-    // Append to body
+    // Adiciona a notificação ao corpo da página
     document.body.appendChild(notification);
     
-    // Auto remove after 5 seconds
+    // Remove automaticamente após 5 segundos
     setTimeout(() => {
         if (notification.parentNode) {
             notification.style.animation = 'slideOut 0.3s ease-in forwards';
@@ -212,7 +219,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Add notification animations to head
+// Adiciona animações CSS para notificações
 const notificationStyles = document.createElement('style');
 notificationStyles.textContent = `
     @keyframes slideIn {
@@ -251,7 +258,8 @@ notificationStyles.textContent = `
 `;
 document.head.appendChild(notificationStyles);
 
-// ===== ANIMATIONS ON SCROLL =====
+// ===== ANIMAÇÕES AO ROLAR =====
+// Aplica animações suaves a elementos quando entram na viewport
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -266,7 +274,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
+// Observa cards de serviços, diferenciais e depoimentos para animação
 const animateElements = document.querySelectorAll('.service__card, .differential__card, .testimonial__card, .about__stat');
 animateElements.forEach(el => {
     el.style.opacity = '0';
@@ -275,7 +283,8 @@ animateElements.forEach(el => {
     observer.observe(el);
 });
 
-// ===== TESTIMONIALS CAROUSEL (Optional Enhancement) =====
+// ===== CARROSSEL DE DEPOIMENTOS (Opcional) =====
+// Alterna automaticamente os depoimentos exibidos
 const testimonialCards = document.querySelectorAll('.testimonial__card');
 let currentTestimonial = 0;
 
@@ -292,7 +301,7 @@ function showTestimonial(index) {
     });
 }
 
-// Auto-rotate testimonials every 5 seconds
+// Rotaciona depoimentos a cada 5 segundos
 if (testimonialCards.length > 1) {
     setInterval(() => {
         currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
@@ -300,7 +309,8 @@ if (testimonialCards.length > 1) {
     }, 5000);
 }
 
-// ===== FORM VALIDATION =====
+// ===== VALIDAÇÃO DO FORMULÁRIO =====
+// Valida os campos do formulário ao perder o foco
 const formInputs = document.querySelectorAll('.form__input');
 
 formInputs.forEach(input => {
@@ -312,10 +322,10 @@ function validateInput(e) {
     const input = e.target;
     const value = input.value.trim();
     
-    // Remove existing validation classes
+    // Remove classes de validação
     input.classList.remove('form__input--error', 'form__input--success');
     
-    // Validate based on input type
+    // Valida com base no tipo de entrada
     let isValid = true;
     
     if (input.hasAttribute('required') && !value) {
@@ -330,7 +340,7 @@ function validateInput(e) {
         isValid = false;
     }
     
-    // Apply validation classes
+    // Aplica classes de validação visual
     if (value) {
         input.classList.add(isValid ? 'form__input--success' : 'form__input--error');
     }
@@ -341,17 +351,19 @@ function clearValidation(e) {
     input.classList.remove('form__input--error', 'form__input--success');
 }
 
+// Valida formato de e-mail
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
+// Valida formato de telefone
 function isValidPhone(phone) {
     const phoneRegex = /^[\(\)\s\-\+\d]{10,}$/;
     return phoneRegex.test(phone);
 }
 
-// Add validation styles
+// Adiciona estilos CSS para validação do formulário
 const validationStyles = document.createElement('style');
 validationStyles.textContent = `
     .form__input--error {
@@ -366,7 +378,8 @@ validationStyles.textContent = `
 `;
 document.head.appendChild(validationStyles);
 
-// ===== PHONE NUMBER FORMATTING =====
+// ===== FORMATAÇÃO DE NÚMERO DE TELEFONE =====
+// Formata automaticamente o campo de WhatsApp com máscara
 const phoneInput = document.getElementById('whatsapp');
 if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
@@ -386,16 +399,17 @@ if (phoneInput) {
     });
 }
 
-// ===== LOADING ANIMATION =====
+// ===== ANIMAÇÃO DE CARREGAMENTO =====
+// Aplica animações ao carregar a página
 window.addEventListener('load', () => {
-    // Hide loading screen if exists
+    // Esconde a tela de carregamento, se existir
     const loader = document.querySelector('.loader');
     if (loader) {
         loader.style.opacity = '0';
         setTimeout(() => loader.remove(), 500);
     }
     
-    // Trigger initial animations
+    // Anima elementos da seção hero ao carregar
     const heroElements = document.querySelectorAll('.hero__title, .hero__subtitle, .hero__description');
     heroElements.forEach((el, index) => {
         setTimeout(() => {
@@ -405,8 +419,8 @@ window.addEventListener('load', () => {
     });
 });
 
-// ===== PERFORMANCE OPTIMIZATIONS =====
-// Debounce scroll events
+// ===== OTIMIZAÇÃO DE PERFORMANCE =====
+// Função para limitar chamadas excessivas em eventos de rolagem
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -419,7 +433,7 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debounce to scroll events
+// Aplica debounce aos eventos de rolagem para melhor performance
 window.removeEventListener('scroll', scrollActive);
 window.removeEventListener('scroll', scrollHeader);
 window.removeEventListener('scroll', scrollToTop);
@@ -428,8 +442,8 @@ window.addEventListener('scroll', debounce(scrollActive, 10));
 window.addEventListener('scroll', debounce(scrollHeader, 10));
 window.addEventListener('scroll', debounce(scrollToTop, 10));
 
-// ===== ACCESSIBILITY IMPROVEMENTS =====
-// Keyboard navigation for mobile menu
+// ===== MELHORIAS DE ACESSIBILIDADE =====
+// Fecha o menu com a tecla Esc no celular
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMenu.classList.contains('show-menu')) {
         navMenu.classList.remove('show-menu');
@@ -437,7 +451,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Focus management for modal-like menu
+// Gerencia o foco ao abrir o menu no celular
 navToggle?.addEventListener('click', () => {
     setTimeout(() => {
         const firstLink = navMenu.querySelector('.nav__link');
@@ -445,48 +459,51 @@ navToggle?.addEventListener('click', () => {
     }, 100);
 });
 
-// ===== CONSOLE WELCOME MESSAGE =====
+// ===== ALTERNÂNCIA DE TEMA =====
+// Alterna entre modo claro e escuro
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    // Carrega o tema salvo do localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+}
+
+// ===== MENSAGEM DE BOAS-VINDAS NO CONSOLE =====
+// Exibe mensagem no console para desenvolvedores
 console.log('%c🚀 JP Higienizações - Website carregado com sucesso!', 'color: #1e3a8a; font-size: 16px; font-weight: bold;');
 console.log('%c💻 Desenvolvido com HTML, CSS e JavaScript', 'color: #6b7280; font-size: 12px;');
 
-// ===== ERROR HANDLING =====
+// ===== TRATAMENTO DE ERROS =====
+// Captura erros globais e os registra no console
 window.addEventListener('error', (e) => {
     console.error('Erro capturado:', e.error);
-    // Optionally send error to analytics or logging service
 });
 
-// ===== SERVICE WORKER REGISTRATION (Optional) =====
+// ===== REGISTRO DE SERVICE WORKER (Opcional) =====
+// Registra um service worker para funcionalidades offline
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js')
             .then(registration => {
-                console.log('SW registered: ', registration);
+                console.log('Service Worker registrado:', registration);
             })
             .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
+                console.log('Falha ao registrar Service Worker:', registrationError);
             });
     });
-}
-
-// ===== THEME TOGGLE =====
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      localStorage.setItem('theme', 'dark');
-    }
-  });
-
-  // Carrega tema salvo
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-  }
 }
