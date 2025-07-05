@@ -937,6 +937,7 @@ button {
     gap: var(--spacing-12);
   }
   
+  
   .hero__image {
     order: -1;
   }
@@ -989,7 +990,10 @@ button {
     right: var(--spacing-6);
     font-size: var(--font-size-2xl);
   }
-  
+  .nav__cta {
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-xs);
+  }
   .hero__title {
     font-size: var(--font-size-4xl);
   }
@@ -1014,6 +1018,10 @@ button {
 
 /* Ajustes para telas menores que 480px */
 @media screen and (max-width: 480px) {
+  .nav__cta {
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--font-size-xs);
+  }
   .container {
     padding: 0 var(--spacing-3);
   }
@@ -1043,7 +1051,7 @@ button {
   .service__card,
   .differential__card,
   .testimonial__card {
-    padding: var(--spacing-6);
+    padding: var(--spacing-);
   }
   
   .whatsapp-float {
