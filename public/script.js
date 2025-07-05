@@ -485,7 +485,7 @@ if (themeToggle) {
 
 // ===== MENSAGEM DE BOAS-VINDAS NO CONSOLE =====
 // Exibe mensagem no console para desenvolvedores
-console.log('%c🚀 JP Higienizações - Website carregado com sucesso!', 'color: #1e3a8a; font-size: 16px; font-weight: bold;');
+console.log('%c🚀 HIGENIZAÇÃO - Website carregado com sucesso!', 'color: #1e3a8a; font-size: 16px; font-weight: bold;');
 console.log('%c💻 Desenvolvido com HTML, CSS e JavaScript', 'color: #6b7280; font-size: 12px;');
 
 // ===== TRATAMENTO DE ERROS =====
