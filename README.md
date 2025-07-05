@@ -1,6 +1,6 @@
-# JP Higienizações - Website
+# Higienizadora - Website
 
-Site moderno e responsivo para a empresa JP Higienizações, especializada em higienização de estofados, colchões e tapetes.
+Site moderno e responsivo para a **Higienizadora**, empresa especializada em higienização de estofados, colchões e tapetes no Brasil.
 
 ## 🚀 Características
 
@@ -41,26 +41,29 @@ Site moderno e responsivo para a empresa JP Higienizações, especializada em hi
 
 ## 📞 Contato da Empresa
 
-- **WhatsApp**: (85) 98884-4042
-- **Instagram**: @jp_higienizacoess
-- **Endereço**: Rua fulano de tal, 122 - Estrela/RS
+- **WhatsApp**: (51) 98301-2611
+- **Instagram**: @higienizadora
+- **Endereço**: Brasil
 - **CNPJ**: 00.000.000/0001-00
 
 ## 🌟 Funcionalidades
 
 ### Formulário de Contato
+
 - Integração direta com WhatsApp
 - Validação de campos
 - Formatação automática de telefone
 - Mensagem personalizada
 
 ### Navegação
+
 - Menu responsivo para mobile
 - Scroll suave entre seções
 - Links ativos conforme scroll
 - Botão "voltar ao topo"
 
 ### Elementos Flutuantes
+
 - Botão WhatsApp com animação pulse
 - Botão scroll to top
 - Notificações de feedback
@@ -68,6 +71,7 @@ Site moderno e responsivo para a empresa JP Higienizações, especializada em hi
 ## 📱 Responsividade
 
 O site é totalmente responsivo com breakpoints para:
+
 - **Desktop**: > 1024px
 - **Tablet**: 768px - 1024px
 - **Mobile**: < 768px
@@ -76,10 +80,6 @@ O site é totalmente responsivo com breakpoints para:
 
 1. Abra o arquivo `index.html` em um navegador
 2. Para desenvolvimento local, use um servidor HTTP:
-   ```bash
-   python3 -m http.server 8000
-   ```
-3. Acesse `http://localhost:8000`
 
 ## 📈 SEO
 
@@ -100,9 +100,11 @@ Para personalizar o site:
 
 ## 📝 Licença
 
-Este projeto foi desenvolvido para a JP Higienizações.
+Este projeto foi desenvolvido para a Higienizadora..
 
 ---
 
-**Desenvolvido com ❤️ para JP Higienizações**
+**Desenvolvido com ❤️ para Higienizadora**
+
+
 
